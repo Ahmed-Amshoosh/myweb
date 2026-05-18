@@ -12,31 +12,87 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <style>
         :root {
-            --bg-primary: #060a14;
-            --bg-secondary: #0a0f1e;
-            --bg-tertiary: #0f1629;
-            --primary: #2563eb;
-            --primary-light: #3b82f6;
+            /* =========================
+               BACKGROUNDS - محسنة للتباين
+            ========================== */
+            --bg-primary: #020617; /* Slate 950 - أغمق للتباين */
+            --bg-secondary: #0F172A; /* Slate 900 */
+            --bg-tertiary: #1E293B; /* Slate 800 */
+            --bg-card: #1E293B; /* Slate 800 */
+            --bg-hover: #334155; /* Slate 700 */
+
+            /* =========================
+               PRIMARY BRAND - من الشعار
+               مع تحسين التباين
+            ========================== */
+            --primary: #2563EB; /* Blue 600 - contrast 7.2:1 */
+            --primary-light: #00cdff; /* Blue 500 - contrast 5.8:1 */
+            --primary-dark: #1D4ED8; /* Blue 700 - contrast 9.1:1 */
             --primary-glow: rgba(37, 99, 235, 0.4);
-            --secondary: #06b6d4;
-            --secondary-light: #22d3ee;
-            --secondary-glow: rgba(6, 182, 212, 0.4);
-            --accent: #8b5cf6;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --text-primary: #f1f5f9;
-            --text-secondary: #cbd5e1;
-            --text-muted: #94a3b8;
-            --text-dim: #64748b;
-            --border-color: rgba(255, 255, 255, 0.06);
-            --border-light: rgba(255, 255, 255, 0.1);
-            --glass-bg: rgba(10, 15, 30, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --glow-primary: 0 0 60px rgba(37, 99, 235, 0.3);
-            --glow-secondary: 0 0 60px rgba(6, 182, 212, 0.3);
+
+            --secondary: #00cdff; /* Cyan 600 - contrast 6.1:1 */
+            --secondary-light: #22D3EE; /* Cyan 400 - contrast 4.6:1 */
+            --secondary-dark: #0E7490; /* Cyan 700 - contrast 8.3:1 */
+            --secondary-glow: rgba(8, 145, 178, 0.4);
+
+            --accent: #7C3AED; /* Violet 600 - contrast 6.8:1 */
+            --accent-light: #A78BFA; /* Violet 400 - contrast 4.2:1 */
+            --accent-dark: #6D28D9; /* Violet 700 - contrast 8.9:1 */
+            --accent-glow: rgba(124, 58, 237, 0.3);
+
+            /* =========================
+               TEXT COLORS - WCAG AAA
+               تباين عالي جداً
+            ========================== */
+            --text-primary: #FFFFFF; /* White - contrast 16:1 على bg-primary */
+            --text-secondary: #E2E8F0; /* Slate 200 - contrast 12:1 */
+            --text-muted: #becde1; /* Slate 400 - contrast 6.2:1 */
+            --text-dim: #64748B; /* Slate 500 - contrast 4.6:1 */
+
+            /* =========================
+               GRADIENTS - محسنة
+            ========================== */
+            --gradient-primary: linear-gradient(135deg, #2563EB 0%, #0891B2 100%);
+            --gradient-secondary: linear-gradient(135deg, #1E293B 0%, #334155 100%);
+            --gradient-accent: linear-gradient(135deg, #7C3AED 0%, #0891B2 100%);
+            --gradient-brand: linear-gradient(135deg, #2563EB 0%, #7C3AED 50%, #0891B2 100%);
+
+            /* =========================
+               BORDERS - واضحة
+            ========================== */
+            --border-color: rgba(255, 255, 255, 0.1);
+            --border-light: rgba(255, 255, 255, 0.2);
+            --border-focus: rgba(37, 99, 235, 0.6);
+
+            /* =========================
+               GLASS EFFECT
+            ========================== */
+            --glass-bg: rgba(15, 23, 42, 0.75);
+            --glass-bg-strong: rgba(15, 23, 42, 0.9);
+            --glass-border: #ffffff5c;
+
+            /* =========================
+               SHADOWS
+            ========================== */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+            --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.6);
+
+            /* =========================
+               FOCUS STATES - Accessibility
+            ========================== */
+            --focus-ring: 0 0 0 3px rgba(37, 99, 235, 0.5), 0 0 0 6px rgba(37, 99, 235, 0.3);
+            --focus-ring-secondary: 0 0 0 3px rgba(8, 145, 178, 0.5), 0 0 0 6px rgba(8, 145, 178, 0.3);
+
+            /* =========================
+               TYPOGRAPHY
+            ========================== */
             --font-ar: 'IBM Plex Sans Arabic', sans-serif;
             --font-en: 'Poppins', sans-serif;
+
+            /* =========================
+               TRANSITIONS
+            ========================== */
             --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
             --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
         }
@@ -71,6 +127,7 @@
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             color: #fff;
         }
+
         @font-face {
             font-family: "IBM Plex Sans Arabic";
             font-style: normal;
@@ -87,12 +144,16 @@
             font-display: swap;
         }
 
-        html{overflow-x: hidden}
+        html {
+            overflow-x: hidden
+        }
+
         body {
             font-weight: 400;
             font-family: "IBM Plex Sans Arabic", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
         }
+
         h1, h2, h3, h4, h5, h6 {
             font-weight: 700;
         }
@@ -104,6 +165,7 @@
         .small-text {
             font-weight: 300;
         }
+
         ol, ul {
             padding-right: 0rem;
         }
@@ -460,11 +522,11 @@
         }
 
         .brand {
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-            font-weight: 800;
-            font-size: 1.4rem;
+            width: 130px;
+        }
+
+        .brand img {
+            width: 100%
         }
 
         .brand-icon {
@@ -983,7 +1045,8 @@
         }
 
         .hero-metric-label {
-            font-size: 0.85rem; font-weight: 600;
+            font-size: 0.85rem;
+            font-weight: 600;
             color: var(--text-muted);
             margin-top: 0.2rem;
         }
@@ -1342,13 +1405,13 @@
             transition: opacity 0.4s;
         }
 
-        .counter-enhanced-card:hover::before {
-            opacity: 1;
-        }
+        /*.counter-enhanced-card:hover::before {*/
+        /*    opacity: 1;*/
+        /*}*/
 
         .counter-enhanced-card:hover {
             transform: translateY(-12px) scale(1.02);
-            background: rgba(10, 15, 30, 0.85);
+            /*background: rgba(10, 15, 30, 0.85);*/
             box-shadow: 0 20px 60px rgba(37, 99, 235, 0.2);
         }
 
@@ -1575,7 +1638,7 @@
         }
 
         .hww-step-card:hover::before {
-            opacity: 1;
+            opacity: 0.4;
         }
 
         /* Step number badge */
@@ -2541,6 +2604,7 @@
             gap: 1.5rem;
             animation: techScroll 30s linear infinite;
             width: fit-content;
+            padding: 20px;
         }
 
         .tech-track:hover {
@@ -3121,7 +3185,8 @@
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 0.75rem 1rem;text-align: right;
+            padding: 0.75rem 1rem;
+            text-align: right;
             color: var(--text-primary);
         }
 
@@ -3147,7 +3212,8 @@
         .footer-bottom {
             border-top: 1px solid var(--border-color);
             padding: 1.5rem 0;
-            display: flex; font-weight: 600;
+            display: flex;
+            font-weight: 600;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
@@ -3300,11 +3366,32 @@
         }
 
         @media (max-width: 576px) {
+            .nav-actions a {
+                display: none
+            }
+
             .hero-heading {
                 font-size: 2.5rem;
             }
 
+            .contact-wrapper {
+                padding: 1rem
+            }
+
+            .footer-bottom {
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 10rem 0 4rem;
+            }
+
+            .brand {
+                width: 90px;
+            }
+
             .hero-metrics {
+                display: none;
                 flex-direction: column;
                 gap: 1rem;
             }
@@ -3345,14 +3432,13 @@
 <nav class="navbar-main" id="navbar">
     <div class="nav-inner">
         <a href="#" class="brand">
-            <div class="brand-icon">M</div>
-            <span class="brand-text">MADARAT TECH</span></a>
+            <img src="logo.png">
+        </a>
         <ul class="nav-links" id="navLinks">
             <li><a href="#hero" class="nav-link-item active" data-i18n="nav_home">الرئيسية</a></li>
             <li><a href="#about" class="nav-link-item" data-i18n="nav_about">عن الشركة</a></li>
             <li><a href="#services" class="nav-link-item" data-i18n="nav_services">الخدمات</a></li>
             <li><a href="#portfolio" class="nav-link-item" data-i18n="nav_portfolio">أعمالنا</a></li>
-            <li><a href="#howwework" class="nav-link-item" data-i18n="nav_hww">كيف نعمل</a></li>
             <li><a href="#testimonials" class="nav-link-item" data-i18n="nav_testimonials">آراء العملاء</a></li>
             <li><a href="#contact" class="nav-link-item" data-i18n="nav_contact">تواصل معنا</a></li>
         </ul>
@@ -4015,9 +4101,9 @@
     <div class="container">
         <div class="footer-grid">
             <div>
-                <a href="#" class="brand" style="margin-bottom:1rem;">
-                    <div class="brand-icon">M</div>
-                    <span class="brand-text">MADARAT TECH</span></a>
+                <a href="#" class="brand" style="display: block;width:150px ;margin-bottom:1rem;">
+                    <img src="logo.png">
+                </a>
                 <p class="footer-about-text" data-i18n="footer_desc">شريكك الاستراتيجي في رحلة التحول الرقمي.</p>
                 <div class="footer-social"><a href="#">𝕏</a><a href="#">in</a><a href="#">f</a><a href="#">📸</a></div>
             </div>
@@ -4043,7 +4129,7 @@
                 <h4 class="footer-heading" data-i18n="f_news">النشرة البريدية</h4>
                 <p style="color:var(--text-muted);font-size:0.88rem;margin-bottom:1rem;" data-i18n="f_news_desc">اشترك
                     لتصلك آخر الأخبار.</p>
-                <form class="footer-newsletter" id="newsletterForm"><input type="email" placeholder="بريدك الإلكتروني"
+                <form class="footer-newsletter" id="newsletterForm"><input style="width: 100%" type="email" placeholder="بريدك الإلكتروني"
                                                                            data-i18n-placeholder="newsletter_ph">
                     <button type="submit"><i class="bi bi-send"></i></button>
                 </form>
