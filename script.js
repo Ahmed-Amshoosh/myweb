@@ -6,7 +6,6 @@ const cursorRing = document.getElementById('cursorRing');
 const preloader = document.getElementById('preloader');
 const preloaderFill = document.getElementById('preloaderFill');
 const preloaderPercent = document.getElementById('preloaderPercent');
-const preloaderStatus = document.getElementById('preloaderStatus');
 const scrollProgressEl = document.getElementById('scrollProgressEl');
 const backToTop = document.getElementById('backToTop');
 const langBtn = document.getElementById('langBtn');
@@ -816,8 +815,6 @@ let testimonials = arTest;
 // =========================================
 // PRELOADER
 // =========================================
-const preloaderStatusesAr = ["جاري تهيئة الأنظمة...", "تحميل البيانات...", "ربط السيرفرات...", "تجهيز الخدمات...", "جاهز!"];
-const preloaderStatusesEn = ["Initializing systems...", "Loading data...", "Connecting servers...", "Preparing services...", "Ready!"];
 let pProgress = 0;
 const pInterval = setInterval(() => {
      pProgress += Math.random() * 12 + 3;
@@ -833,7 +830,6 @@ const pInterval = setInterval(() => {
      preloaderPercent.textContent = Math.floor(pProgress) + '%';
      preloaderFill.style.width = pProgress + '%';
      const idx = Math.min(Math.floor(pProgress / 25), 4);
-     preloaderStatus.textContent = currentLang === 'ar' ? preloaderStatusesAr[idx] : preloaderStatusesEn[idx];
 }, 150);
 
 // =========================================
@@ -929,7 +925,7 @@ function updateLang(lang) {
      const d = T[lang];
      testimonials = lang === 'ar' ? arTest : enTest;
      testimonialIndex = 0;
-     updateTestimonial();
+     // updateTestimonial();
      document.querySelectorAll('[data-i18n]').forEach(el => {
           const k = el.getAttribute('data-i18n');
           if (d[k]) el.innerHTML = d[k];
@@ -938,7 +934,7 @@ function updateLang(lang) {
           const k = el.getAttribute('data-i18n-placeholder');
           if (d[k]) el.placeholder = d[k];
      });
-     buildDots();
+     // buildDots();
 }
 
 // =========================================
@@ -1267,7 +1263,7 @@ function buildDots() {
           dot.className = 'slider-dot' + (i === testimonialIndex ? ' active' : '');
           dot.addEventListener('click', () => {
                testimonialIndex = i;
-               updateTestimonial();
+               // updateTestimonial();
           });
           dc.appendChild(dot);
      });
@@ -1284,22 +1280,22 @@ function updateTestimonial() {
                gsap.to('#testimonialCard', { opacity: 1, y: 0, duration: 0.5 });
           }
      });
-     buildDots();
+     // buildDots();
 }
 
-document.getElementById('nextTest').addEventListener('click', () => {
-     testimonialIndex = (testimonialIndex + 1) % testimonials.length;
-     updateTestimonial();
-});
-document.getElementById('prevTest').addEventListener('click', () => {
-     testimonialIndex = (testimonialIndex - 1 + testimonials.length) % testimonials.length;
-     updateTestimonial();
-});
+// document.getElementById('nextTest').addEventListener('click', () => {
+//      testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+//      updateTestimonial();
+// });
+// document.getElementById('prevTest').addEventListener('click', () => {
+//      testimonialIndex = (testimonialIndex - 1 + testimonials.length) % testimonials.length;
+//      updateTestimonial();
+// });
 setInterval(() => {
      testimonialIndex = (testimonialIndex + 1) % testimonials.length;
-     updateTestimonial();
+     // updateTestimonial();
 }, 7000);
-buildDots();
+// buildDots();
 
 // =========================================
 // FAQ
