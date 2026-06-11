@@ -48,86 +48,86 @@ const servicesData = [
           }],
           tech: ["WordPress", "PHP", "MySQL", "Elementor", "WooCommerce", "Yoast SEO"],
      },
-    {
-     id: 2,
-     category: "dev",
-     icon: "bi-globe2",
-     number: "02",
+     {
+          id: 2,
+          category: "dev",
+          icon: "bi-globe2",
+          number: "02",
 
-     img: "./img/services8.png",
+          img: "./img/services8.png",
 
-     title_ar: "تطوير منصات الويب",
-     title_en: "Web Platform Development",
+          title_ar: "تطوير منصات الويب",
+          title_en: "Web Platform Development",
 
-     desc_ar: "نبني منصات ويب احترافية وقابلة للتوسع باستخدام Laravel وأحدث التقنيات.",
-     desc_en: "We build professional and scalable web platforms using Laravel and modern technologies.",
+          desc_ar: "نبني منصات ويب احترافية وقابلة للتوسع باستخدام Laravel وأحدث التقنيات.",
+          desc_en: "We build professional and scalable web platforms using Laravel and modern technologies.",
 
-     tags_ar: ["Laravel", "PHP", "منصات"],
-     tags_en: ["Laravel", "PHP", "Platforms"],
+          tags_ar: ["Laravel", "PHP", "منصات"],
+          tags_en: ["Laravel", "PHP", "Platforms"],
 
-     desc_full_ar:
-          "نطور منصات ويب احترافية من الصفر باستخدام Laravel مع التركيز على الأداء، الأمان وتجربة المستخدم.",
+          desc_full_ar:
+               "نطور منصات ويب احترافية من الصفر باستخدام Laravel مع التركيز على الأداء، الأمان وتجربة المستخدم.",
 
-     desc_full_en:
-          "We develop professional web platforms from scratch using Laravel with a focus on performance, security, and user experience.",
+          desc_full_en:
+               "We develop professional web platforms from scratch using Laravel with a focus on performance, security, and user experience.",
 
-     includes_ar: [
-          "تطوير الواجهة الخلفية باستخدام Laravel",
-          "تصميم قواعد البيانات وربطها",
-          "إنشاء RESTful APIs",
-          "نظام تسجيل دخول وصلاحيات",
-          "لوحة تحكم احترافية",
-          "ربط أنظمة الدفع والخدمات الخارجية",
-          "تحسين الأداء والحماية",
-          "رفع المشروع على السيرفر"
-     ],
+          includes_ar: [
+               "تطوير الواجهة الخلفية باستخدام Laravel",
+               "تصميم قواعد البيانات وربطها",
+               "إنشاء RESTful APIs",
+               "نظام تسجيل دخول وصلاحيات",
+               "لوحة تحكم احترافية",
+               "ربط أنظمة الدفع والخدمات الخارجية",
+               "تحسين الأداء والحماية",
+               "رفع المشروع على السيرفر"
+          ],
 
-     includes_en: [
-          "Backend development using Laravel",
-          "Database design and integration",
-          "RESTful API development",
-          "Authentication and roles system",
-          "Professional admin dashboard",
-          "Payment gateways and third-party integrations",
-          "Performance and security optimization",
-          "Project deployment on server"
-     ],
+          includes_en: [
+               "Backend development using Laravel",
+               "Database design and integration",
+               "RESTful API development",
+               "Authentication and roles system",
+               "Professional admin dashboard",
+               "Payment gateways and third-party integrations",
+               "Performance and security optimization",
+               "Project deployment on server"
+          ],
 
-     skills: [
-          {
-               name_ar: "Laravel",
-               name_en: "Laravel",
-               level: 95
-          },
+          skills: [
+               {
+                    name_ar: "Laravel",
+                    name_en: "Laravel",
+                    level: 95
+               },
 
-          {
-               name_ar: "PHP",
-               name_en: "PHP",
-               level: 92
-          },
+               {
+                    name_ar: "PHP",
+                    name_en: "PHP",
+                    level: 92
+               },
 
-          {
-               name_ar: "MySQL",
-               name_en: "MySQL",
-               level: 90
-          },
+               {
+                    name_ar: "MySQL",
+                    name_en: "MySQL",
+                    level: 90
+               },
 
-          {
-               name_ar: "API Development",
-               name_en: "API Development",
-               level: 88
-          }
-     ],
+               {
+                    name_ar: "API Development",
+                    name_en: "API Development",
+                    level: 88
+               }
+          ],
 
-     tech: [
-          "Laravel",
-          "PHP",
-          "MySQL",
-          "Blade",
-          "Bootstrap",
-          "cPanel"
-     ]
-},
+          tech: [
+               "Laravel",
+               "PHP",
+               "MySQL",
+               "Blade",
+               "Bootstrap",
+               "cPanel"
+          ]
+     },
      {
           id: 3, category: "dev", icon: "bi-phone", number: "03",
           img: "./img/services11.png",
@@ -589,7 +589,7 @@ const T = {
           contact_info_title: "معلومات الاتصال",
           contact_info_desc: "نحن هنا لمساعدتك.",
           c_address_label: "العنوان",
-          c_address: "الرياض، السعودية",
+          c_address: "اليمن ,حضرموت ,سيئون",
           c_email_label: "البريد الإلكتروني",
           c_phone_label: "الهاتف",
           c_hours_label: "ساعات العمل",
@@ -728,7 +728,7 @@ const T = {
           contact_info_title: "Contact Info",
           contact_info_desc: "We're here to help.",
           c_address_label: "Address",
-          c_address: "Riyadh, Saudi Arabia",
+          c_address: "Seiyun, Hadhramaut, Yemen",
           c_email_label: "Email",
           c_phone_label: "Phone",
           c_hours_label: "Working Hours",
