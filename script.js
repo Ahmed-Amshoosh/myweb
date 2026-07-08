@@ -18,7 +18,8 @@ const pmBackdrop = document.getElementById('pmBackdrop');
 const contactForm = document.getElementById('contactForm');
 const hwwTrack = document.getElementById('hwwTrack');
 
-let currentLang = 'ar';
+let currentLang = localStorage.getItem('lang') ||
+    (navigator.language.startsWith('ar') ? 'ar' : 'en');
 let testimonialIndex = 0;
 let isMenuOpen = false;
 
@@ -53,80 +54,19 @@ const servicesData = [
           category: "dev",
           icon: "bi-globe2",
           number: "02",
-
           img: "./img/services8.png",
-
           title_ar: "تطوير منصات الويب",
           title_en: "Web Platform Development",
-
           desc_ar: "نبني منصات ويب احترافية وقابلة للتوسع باستخدام Laravel وأحدث التقنيات.",
           desc_en: "We build professional and scalable web platforms using Laravel and modern technologies.",
-
           tags_ar: ["Laravel", "PHP", "منصات"],
           tags_en: ["Laravel", "PHP", "Platforms"],
-
-          desc_full_ar:
-               "نطور منصات ويب احترافية من الصفر باستخدام Laravel مع التركيز على الأداء، الأمان وتجربة المستخدم.",
-
-          desc_full_en:
-               "We develop professional web platforms from scratch using Laravel with a focus on performance, security, and user experience.",
-
-          includes_ar: [
-               "تطوير الواجهة الخلفية باستخدام Laravel",
-               "تصميم قواعد البيانات وربطها",
-               "إنشاء RESTful APIs",
-               "نظام تسجيل دخول وصلاحيات",
-               "لوحة تحكم احترافية",
-               "ربط أنظمة الدفع والخدمات الخارجية",
-               "تحسين الأداء والحماية",
-               "رفع المشروع على السيرفر"
-          ],
-
-          includes_en: [
-               "Backend development using Laravel",
-               "Database design and integration",
-               "RESTful API development",
-               "Authentication and roles system",
-               "Professional admin dashboard",
-               "Payment gateways and third-party integrations",
-               "Performance and security optimization",
-               "Project deployment on server"
-          ],
-
-          skills: [
-               {
-                    name_ar: "Laravel",
-                    name_en: "Laravel",
-                    level: 95
-               },
-
-               {
-                    name_ar: "PHP",
-                    name_en: "PHP",
-                    level: 92
-               },
-
-               {
-                    name_ar: "MySQL",
-                    name_en: "MySQL",
-                    level: 90
-               },
-
-               {
-                    name_ar: "API Development",
-                    name_en: "API Development",
-                    level: 88
-               }
-          ],
-
-          tech: [
-               "Laravel",
-               "PHP",
-               "MySQL",
-               "Blade",
-               "Bootstrap",
-               "cPanel"
-          ]
+          desc_full_ar: "نطور منصات ويب احترافية من الصفر باستخدام Laravel مع التركيز على الأداء، الأمان وتجربة المستخدم.",
+          desc_full_en: "We develop professional web platforms from scratch using Laravel with a focus on performance, security, and user experience.",
+          includes_ar: ["تطوير الواجهة الخلفية باستخدام Laravel", "تصميم قواعد البيانات وربطها", "إنشاء RESTful APIs", "نظام تسجيل دخول وصلاحيات", "لوحة تحكم احترافية", "ربط أنظمة الدفع والخدمات الخارجية", "تحسين الأداء والحماية", "رفع المشروع على السيرفر"],
+          includes_en: ["Backend development using Laravel", "Database design and integration", "RESTful API development", "Authentication and roles system", "Professional admin dashboard", "Payment gateways and third-party integrations", "Performance and security optimization", "Project deployment on server"],
+          skills: [{ name_ar: "Laravel", name_en: "Laravel", level: 95 }, { name_ar: "PHP", name_en: "PHP", level: 92 }, { name_ar: "MySQL", name_en: "MySQL", level: 90 }, { name_ar: "API Development", name_en: "API Development", level: 88 }],
+          tech: ["Laravel", "PHP", "MySQL", "Blade", "Bootstrap", "cPanel"]
      },
      {
           id: 3, category: "dev", icon: "bi-phone", number: "03",
@@ -135,21 +75,12 @@ const servicesData = [
           desc_ar: "نطور تطبيقات موبايل أصلية وهجينة لأنظمة iOS و Android.",
           desc_en: "We develop native and hybrid mobile apps for iOS and Android.",
           tags_ar: ["Flutter", "iOS", "Android"], tags_en: ["Flutter", "iOS", "Android"],
-          desc_full_ar: "نطور تطبيقات موبايل احترافية عالية الأداء باستخدام Flutter، مع تصميم عصري وتجربة مستخدم سلسة تدعم أنظمة Android و iOS بكود موحد، مع التركيز على السرعة، الأمان، وقابلية التوسع."
-          , desc_full_en: "We develop high-performance mobile apps using Flutter and React Native.",
+          desc_full_ar: "نطور تطبيقات موبايل احترافية عالية الأداء باستخدام Flutter، مع تصميم عصري وتجربة مستخدم سلسة تدعم أنظمة Android و iOS بكود موحد، مع التركيز على السرعة، الأمان، وقابلية التوسع.",
+          desc_full_en: "We develop high-performance mobile apps using Flutter and React Native.",
           includes_ar: ["تصميم واجهة المستخدم", "تطوير التطبيق بـ Flutter", "ربط مع APIs الخلفية", "إشعارات ذكية", "تتبع الموقع GPS", "نشر على المتاجر", "دعم فني بعد الإطلاق", "تحديثات دورية"],
           includes_en: ["UI/UX design", "App development with Flutter", "Backend API integration", "Smart notifications", "GPS tracking", "App Store publishing", "Post-launch support", "Regular updates"],
-          skills: [{ name_ar: "Flutter", name_en: "Flutter", level: 93 }, {
-               name_ar: "Dart",
-               name_en: "Dart",
-               level: 90
-          }, {
-               name_ar: "Firebase",
-               name_en: "Firebase",
-               level: 88
-          }],
+          skills: [{ name_ar: "Flutter", name_en: "Flutter", level: 93 }, { name_ar: "Dart", name_en: "Dart", level: 90 }, { name_ar: "Firebase", name_en: "Firebase", level: 88 }],
           tech: ["Flutter", "Firebase", "REST APIs", "Google Maps", "Push Notifications"],
-
      },
      {
           id: 4, category: "dev", icon: "bi-shop", number: "04",
@@ -162,17 +93,8 @@ const servicesData = [
           desc_full_en: "Comprehensive service for creating and managing stores on Salla. Includes design, product addition, payment gateway integration, SEO, and shipping integration.",
           includes_ar: ["تصميم المتجر بالكامل", "إضافة المنتجات وتصنيفها", "ربط بوابات الدفع", "ربط شركات الشحن", "تحسين SEO للمتجر", "إدارة المخزون والطلبات", "تقارير مبيعات دورية", "دعم فني مستمر"],
           includes_en: ["Full store design", "Product addition & categorization", "Payment gateway integration", "Shipping & delivery integration", "Store SEO optimization", "Inventory & order management", "Periodic sales reports", "Ongoing technical support"],
-          skills: [{ name_ar: "سلة", name_en: "Salla", level: 97 }, {
-               name_ar: "إدارة متاجر",
-               name_en: "Store Management",
-               level: 95
-          }, { name_ar: "تحسين مبيعات", name_en: "Sales Optimization", level: 90 }, {
-               name_ar: "SEO",
-               name_en: "SEO",
-               level: 85
-          }],
+          skills: [{ name_ar: "سلة", name_en: "Salla", level: 97 }, { name_ar: "إدارة متاجر", name_en: "Store Management", level: 95 }, { name_ar: "تحسين مبيعات", name_en: "Sales Optimization", level: 90 }, { name_ar: "SEO", name_en: "SEO", level: 85 }],
           tech: ["Salla", "Payment Gateways", "Shipping APIs", "Analytics Tools"],
-
      },
      {
           id: 5, category: "marketing", icon: "bi-graph-up-arrow", number: "05",
@@ -185,17 +107,8 @@ const servicesData = [
           desc_full_en: "Comprehensive SEO services including keyword analysis, content optimization, technical optimization, and backlink building.",
           includes_ar: ["تحليل الكلمات المفتاحية", "تحسين المحتوى والصفحات", "تحسين العوامل التقنية", "بناء روابط خلفية عالية الجودة", "ربط مع Google Search Console", "تقارير أداء شهرية", "تحسين Core Web Vitals", "ربط مع منصات خارجية"],
           includes_en: ["Keyword analysis", "Content & page optimization", "Technical SEO optimization", "High-quality backlink building", "Google Search Console integration", "Monthly performance reports", "Core Web Vitals optimization", "External platform integration"],
-          skills: [{ name_ar: "SEO تقني", name_en: "Technical SEO", level: 95 }, {
-               name_ar: "تحليل كلمات",
-               name_en: "Keyword Analysis",
-               level: 92
-          }, { name_ar: "تحليل بيانات", name_en: "Data Analysis", level: 88 }, {
-               name_ar: "كتابة محتوى",
-               name_en: "Content Writing",
-               level: 85
-          }],
+          skills: [{ name_ar: "SEO تقني", name_en: "Technical SEO", level: 95 }, { name_ar: "تحليل كلمات", name_en: "Keyword Analysis", level: 92 }, { name_ar: "تحليل بيانات", name_en: "Data Analysis", level: 88 }, { name_ar: "كتابة محتوى", name_en: "Content Writing", level: 85 }],
           tech: ["Google Search Console", "Google Analytics", "Ahrefs", "SEMrush", "Screaming Frog", "Schema Markup"],
-
      },
      {
           id: 6, category: "design", icon: "bi-code-slash", number: "06",
@@ -215,10 +128,8 @@ const servicesData = [
                { name_ar: "Figma", name_en: "Figma", level: 95 },
                { name_ar: "تصميم واجهات", name_en: "UI Design", level: 93 }
           ],
-
           tech: ["Tailwind CSS", "Figma", "Adobe XD", "Bootstrap", "SCSS"],
      },
-
      {
           id: 8, category: "dev", icon: "bi-building", number: "08",
           img: "./img/services5.png",
@@ -230,15 +141,7 @@ const servicesData = [
           desc_full_en: "We develop customized ERP systems including HR management, CRM, accounting, inventory management, and administrative reports.",
           includes_ar: ["إدارة الموارد البشرية", "إدارة علاقات العملاء", "إدارة المخزون والمشتريات", "لوحة تحكم إدارية", "تقارير وإحصائيات متقدمة", "صلاحيات متعددة المستويات", "ربط مع الأنظمة الخارجية"],
           includes_en: ["Human Resources Management", "Customer Relationship Management", "Inventory & procurement", "Administrative dashboard", "Advanced reports", "Multi-level permissions", "External systems integration"],
-          skills: [{ name_ar: "ERP Systems", name_en: "ERP Systems", level: 95 }, {
-               name_ar: "PHP/Laravel",
-               name_en: "PHP/Laravel",
-               level: 90
-          }, { name_ar: "قواعد بيانات", name_en: "Databases", level: 92 }, {
-               name_ar: "تحليل أعمال",
-               name_en: "Business Analysis",
-               level: 88
-          }],
+          skills: [{ name_ar: "ERP Systems", name_en: "ERP Systems", level: 95 }, { name_ar: "PHP/Laravel", name_en: "PHP/Laravel", level: 90 }, { name_ar: "قواعد بيانات", name_en: "Databases", level: 92 }, { name_ar: "تحليل أعمال", name_en: "Business Analysis", level: 88 }],
           tech: ["Laravel", "MySQL", "REST APIs", "PHP", "Git", "Redis"]
      },
      {
@@ -252,114 +155,9 @@ const servicesData = [
           desc_full_en: "Integration services including payment gateway, WhatsApp Business API, notification systems, and system integration.",
           includes_ar: ["ربط بوابات الدفع الإلكتروني", "ربط واتساب للأعمال", "أنظمة الإشعارات الذكية", "ربط ERP مع الأنظمة الخارجية", "بناء RESTful APIs مخصصة", "Webhooks للأحداث الفورية", "توثيق شامل للـ APIs", "اختبار ومراقبة التكامل"],
           includes_en: ["Payment gateway integration", "WhatsApp Business API", "Smart notification systems", "ERP integration with external systems", "Custom RESTful APIs", "Webhooks for real-time events", "Comprehensive API documentation", "Integration testing & monitoring"],
-          skills: [{ name_ar: "REST APIs", name_en: "REST APIs", level: 95 }, {
-               name_ar: "Webhooks",
-               name_en: "Webhooks",
-               level: 90
-          }, { name_ar: "OAuth", name_en: "OAuth", level: 88 }, { name_ar: "JSON/XML", name_en: "JSON/XML", level: 92 }],
+          skills: [{ name_ar: "REST APIs", name_en: "REST APIs", level: 95 }, { name_ar: "Webhooks", name_en: "Webhooks", level: 90 }, { name_ar: "OAuth", name_en: "OAuth", level: 88 }, { name_ar: "JSON/XML", name_en: "JSON/XML", level: 92 }],
           tech: ["REST APIs", "GraphQL", "Webhooks", "OAuth 2.0", "Postman"],
      },
-     // {
-     //      id: 10, category: "infra", icon: "bi-hdd-rack", number: "10",
-     //      img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80",
-     //      title_ar: "الاستضافة وإدارة السيرفرات", title_en: "Hosting & Server Management",
-     //      desc_ar: "نعدّ السيرفرات، نوفر الحماية والنسخ الاحتياطي، ونحسن الأداء.",
-     //      desc_en: "We set up servers, provide protection and backups, and optimize performance.",
-     //      tags_ar: ["سيرفرات", "AWS", "DevOps"], tags_en: ["Servers", "AWS", "DevOps"],
-     //      desc_full_ar: "خدمات استضافة وإدارة سيرفرات تشمل إعداد السيرفرات، الحماية المتقدمة، النسخ الاحتياطي، ومراقبة الأداء.",
-     //      desc_full_en: "Hosting and server management including server setup, advanced protection, backups, and 24/7 performance monitoring.",
-     //      includes_ar: ["إعداد السيرفرات من الصفر", "تثبيت وتكوين أنظمة التشغيل", "الحماية المتقدمة", "النسخ الاحتياطي التلقائي", "مراقبة الأداء 24/7", "تحسين السرعة والاستقرار", "إدارة قواعد البيانات", "تقارير أداء شهرية"],
-     //      includes_en: ["Server setup from scratch", "OS installation & configuration", "Advanced protection", "Daily automatic backups", "24/7 performance monitoring", "Speed & stability optimization", "Database management", "Monthly performance reports"],
-     //      skills: [{ name_ar: "Linux", name_en: "Linux", level: 95 }, {
-     //           name_ar: "AWS",
-     //           name_en: "AWS",
-     //           level: 90
-     //      }, { name_ar: "Docker", name_en: "Docker", level: 92 }, { name_ar: "Nginx", name_en: "Nginx", level: 88 }],
-     //      tech: ["AWS", "DigitalOcean", "Docker", "Nginx", "Linux", "Vercel"],
-     //      examples: [{
-     //           img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=400&q=80",
-     //           title_ar: "إعداد سيرفر سحابي",
-     //           title_en: "Cloud Server Setup"
-     //      }, {
-     //           img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&q=80",
-     //           title_ar: "إدارة سيرفرات",
-     //           title_en: "Server Management"
-     //      }, {
-     //           img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80",
-     //           title_ar: "تحسين أداء",
-     //           title_en: "Performance Optimization"
-     //      }]
-     // },
-     // {
-     //      id: 11, category: "infra", icon: "bi-shield-lock", number: "11",
-     //      img: "https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=800&q=80",
-     //      title_ar: "الأمن السيبراني وحماية المواقع", title_en: "Cybersecurity & Website Protection",
-     //      desc_ar: "نحمي المواقع والتطبيقات، نفحص الثغرات، ونؤمن قواعد البيانات.",
-     //      desc_en: "We protect websites and applications, scan vulnerabilities, and secure databases.",
-     //      tags_ar: ["أمن", "حماية", "اختبار اختراق"], tags_en: ["Security", "Protection", "Penetration Testing"],
-     //      desc_full_ar: "خدمات أمن سيبراني شاملة تشمل فحص الثغرات، اختبار الاختراق، حماية من DDoS، وتأمين قواعد البيانات.",
-     //      desc_full_en: "Comprehensive cybersecurity including vulnerability scanning, penetration testing, DDoS protection, and database security.",
-     //      includes_ar: ["فحص الثغرات الأمنية", "اختبار الاختراق", "حماية من هجمات DDoS", "تأمين قواعد البيانات", "تأمين الخوادم والـ APIs", "إعداد شهادات SSL/TLS", "مراقبة التهديدات 24/7", "تقارير أمنية دورية"],
-     //      includes_en: ["Vulnerability scanning", "Penetration Testing", "DDoS attack protection", "Database security", "Server & API security", "SSL/TLS certificate setup", "24/7 threat monitoring", "Periodic security reports"],
-     //      skills: [{ name_ar: "أمن سيبراني", name_en: "Cybersecurity", level: 95 }, {
-     //           name_ar: "اختبار اختراق",
-     //           name_en: "Penetration Testing",
-     //           level: 90
-     //      }, { name_ar: "تشفير", name_en: "Encryption", level: 92 }, {
-     //           name_ar: "تحليل تهديدات",
-     //           name_en: "Threat Analysis",
-     //           level: 88
-     //      }],
-     //      tech: ["Burp Suite", "Nmap", "Metasploit", "Wireshark", "OWASP", "Cloudflare"],
-     //      examples: [{
-     //           img: "https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=400&q=80",
-     //           title_ar: "حماية موقع",
-     //           title_en: "Site Protection"
-     //      }, {
-     //           img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&q=80",
-     //           title_ar: "اختبار اختراق",
-     //           title_en: "Penetration Test"
-     //      }, {
-     //           img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80",
-     //           title_ar: "تأمين قاعدة بيانات",
-     //           title_en: "Database Security"
-     //      }]
-     // },
-     // {
-     //      id: 12, category: "infra", icon: "bi-life-preserver", number: "12",
-     //      img: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80",
-     //      title_ar: "الدعم الفني والصيانة", title_en: "Technical Support & Maintenance",
-     //      desc_ar: "متابعة دورية، إصلاح المشاكل، وتحديثات وتحسينات مستمرة.",
-     //      desc_en: "Regular follow-up, issue resolution, and continuous updates and improvements.",
-     //      tags_ar: ["دعم فني", "صيانة", "تحديثات"], tags_en: ["Support", "Maintenance", "Updates"],
-     //      desc_full_ar: "خدمات دعم فني وصيانة شاملة تشمل متابعة دورية، إصلاح سريع، تحديثات أمنية، ومراقبة الأداء.",
-     //      desc_full_en: "Comprehensive technical support and maintenance including regular follow-up, quick fixes, security updates, and performance monitoring.",
-     //      includes_ar: ["متابعة دورية للمشاريع", "إصلاح المشاكل التقنية", "تحديثات أمنية ووظيفية", "مراقبة الأداء والسرعة", "نسخ احتياطي دوري", "تقارير حالة شهرية", "فريق دعم 24/7", "تحسينات مستمرة"],
-     //      includes_en: ["Regular project follow-up", "Quick technical issue resolution", "Security & feature updates", "Performance monitoring", "Regular backups", "Monthly status reports", "24/7 support team", "Continuous improvements"],
-     //      skills: [{ name_ar: "دعم فني", name_en: "Technical Support", level: 97 }, {
-     //           name_ar: "حل مشاكل",
-     //           name_en: "Troubleshooting",
-     //           level: 95
-     //      }, { name_ar: "مراقبة أنظمة", name_en: "System Monitoring", level: 90 }, {
-     //           name_ar: "تحسين أداء",
-     //           name_en: "Performance Tuning",
-     //           level: 88
-     //      }],
-     //      tech: ["Monitoring Tools", "Logging Systems", "Backup Solutions", "Ticketing Systems", "Analytics"],
-     //      examples: [{
-     //           img: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=400&q=80",
-     //           title_ar: "دعم فني لمشروع",
-     //           title_en: "Project Support"
-     //      }, {
-     //           img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&q=80",
-     //           title_ar: "صيانة نظام",
-     //           title_en: "System Maintenance"
-     //      }, {
-     //           img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80",
-     //           title_ar: "تحديث موقع",
-     //           title_en: "Website Update"
-     //      }]
-     // },
      {
           id: 13, category: "dev", icon: "bi-window-desktop", number: "13",
           img: "./img/services6.png",
@@ -371,49 +169,9 @@ const servicesData = [
           desc_full_en: "We build fully customized systems including professional dashboards, custom management systems, and integrated digital solutions.",
           includes_ar: ["تحليل متطلبات مفصل", "تصميم النظام المخصص", "لوحات تحكم احترافية", "نظام صلاحيات متقدم", "تقارير وإحصائيات مخصصة", "ربط مع الأنظمة الحالية", "تدريب الفريق", "دعم وصيانة مستمرة"],
           includes_en: ["Detailed requirements analysis", "Custom system design", "Professional dashboards", "Advanced permissions system", "Custom reports & statistics", "Integration with existing systems", "Team training", "Ongoing support & maintenance"],
-          skills: [{ name_ar: "تحليل متطلبات", name_en: "Requirements Analysis", level: 95 }, {
-               name_ar: "تصميم أنظمة",
-               name_en: "System Design",
-               level: 92
-          }, {
-               name_ar: "قواعد بيانات",
-               name_en: "Databases",
-               level: 88
-          }],
+          skills: [{ name_ar: "تحليل متطلبات", name_en: "Requirements Analysis", level: 95 }, { name_ar: "تصميم أنظمة", name_en: "System Design", level: 92 }, { name_ar: "قواعد بيانات", name_en: "Databases", level: 88 }],
           tech: ["Laravel", "PostgreSQL", "Redis", "Docker", "GraphQL"],
-
      },
-     // {
-     //      id: 14, category: "dev", icon: "bi-robot", number: "14",
-     //      img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
-     //      title_ar: "الأتمتة والذكاء الاصطناعي", title_en: "Automation & Artificial Intelligence",
-     //      desc_ar: "أتمتة المهام، شات بوت ذكي، وحلول AI مخصصة للشركات.",
-     //      desc_en: "Task automation, smart chatbots, and custom AI solutions for businesses.",
-     //      tags_ar: ["AI", "أتمتة", "شات بوت"], tags_en: ["AI", "Automation", "Chatbot"],
-     //      desc_full_ar: "حلول الأتمتة والذكاء الاصطناعي تشمل أتمتة المهام، شات بوت ذكي، تحليل البيانات، وأنظمة التوصية.",
-     //      desc_full_en: "Automation and AI solutions including task automation, smart chatbots, AI data analysis, and recommendation systems.",
-     //      includes_ar: ["أتمتة المهام المتكررة", "شات بوت ذكي للخدمة العملاء", "تحليل البيانات بالذكاء الاصطناعي", "أنظمة توصية ذكية", "معالجة اللغات الطبيعية", "تدريب نماذج AI مخصصة", "تكامل مع الأنظمة الحالية", "تقارير ذكية"],
-     //      includes_en: ["Repetitive task automation", "Smart customer service chatbot", "AI-powered data analysis", "Smart recommendation systems", "Natural Language Processing", "Custom AI model training", "Integration with existing systems", "Smart reports & analytics"],
-     //      skills: [{ name_ar: "Python", name_en: "Python", level: 95 }, {
-     //           name_ar: "Machine Learning",
-     //           name_en: "Machine Learning",
-     //           level: 90
-     //      }, { name_ar: "NLP", name_en: "NLP", level: 88 }, { name_ar: "TensorFlow", name_en: "TensorFlow", level: 85 }],
-     //      tech: ["Python", "TensorFlow", "OpenAI API", "LangChain", "Pinecone", "FastAPI"],
-     //      examples: [{
-     //           img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=400&q=80",
-     //           title_ar: "شات بوت ذكي",
-     //           title_en: "Smart Chatbot"
-     //      }, {
-     //           img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&q=80",
-     //           title_ar: "تحليل بيانات AI",
-     //           title_en: "AI Data Analysis"
-     //      }, {
-     //           img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80",
-     //           title_ar: "أتمتة عمليات",
-     //           title_en: "Process Automation"
-     //      }]
-     // },
      {
           id: 15, category: "design", icon: "bi-brush", number: "15",
           img: "./img/services4.png",
@@ -425,17 +183,8 @@ const servicesData = [
           desc_full_en: "We design comprehensive digital visual identity including logo, colors, fonts, company profile, and social media designs.",
           includes_ar: ["تصميم الشعار", "دليل الهوية البصرية", "تصميم البروفايل", "بطاقات العمل", "تصاميم السوشال ميديا", "قوالب العروض", "تصميم الأوراق الرسمية", "هوية رقمية متسقة"],
           includes_en: ["Logo design", "Visual identity guide", "Company profile design", "Business cards", "Social media designs", "Presentation templates", "Letterhead & envelope design", "Consistent digital identity"],
-          skills: [{ name_ar: "تصميم شعارات", name_en: "Logo Design", level: 95 }, {
-               name_ar: "Adobe Illustrator",
-               name_en: "Adobe Illustrator",
-               level: 92
-          }, { name_ar: "Photoshop", name_en: "Photoshop", level: 90 }, {
-               name_ar: "InDesign",
-               name_en: "InDesign",
-               level: 85
-          }],
+          skills: [{ name_ar: "تصميم شعارات", name_en: "Logo Design", level: 95 }, { name_ar: "Adobe Illustrator", name_en: "Adobe Illustrator", level: 92 }, { name_ar: "Photoshop", name_en: "Photoshop", level: 90 }, { name_ar: "InDesign", name_en: "InDesign", level: 85 }],
           tech: ["Adobe Illustrator", "Photoshop", "InDesign", "Canva Pro"],
-
      },
      {
           id: 16,
@@ -447,37 +196,17 @@ const servicesData = [
           title_en: "Business Email Setup & Management",
           desc_ar: "إنشاء وإدارة الإيميلات الرسمية للشركات وربطها بالدومين مع تنظيم الحسابات وضمان الأمان والاستقرار.",
           desc_en: "Create and manage professional business emails, connect them to domain, and ensure security and stability.",
-
           tags_ar: ["إيميلات شركات", "بريد احترافي", "دومين"],
           tags_en: ["Business Email", "Professional Email", "Domain"],
-
           desc_full_ar: "نقوم بإنشاء بريد إلكتروني احترافي خاص بالشركة باستخدام الدومين الرسمي (مثل info@company.com)، مع إعداد الحسابات وربطها بالأجهزة، وضبط الأمان، وإدارة المستخدمين والصلاحيات، بالإضافة إلى دعم واستمرارية الخدمة.",
           desc_full_en: "We set up professional business emails using the company domain (e.g., info@company.com), configure accounts, connect devices, manage users and permissions, and ensure security and reliability.",
-
-          includes_ar: [
-               "إنشاء إيميلات رسمية باسم الدومين",
-               "ربط الإيميلات على الجوال والكمبيوتر",
-               "إدارة الحسابات والصلاحيات",
-               "حماية البريد من الاختراق",
-               "إعداد التوقيع الرسمي",
-               "استرجاع وإدارة كلمات المرور"
-          ],
-
-          includes_en: [
-               "Create domain-based business emails",
-               "Setup on mobile and desktop",
-               "Manage users and permissions",
-               "Email security configuration",
-               "Official email signature setup",
-               "Password recovery and management"
-          ],
-
+          includes_ar: ["إنشاء إيميلات رسمية باسم الدومين", "ربط الإيميلات على الجوال والكمبيوتر", "إدارة الحسابات والصلاحيات", "حماية البريد من الاختراق", "إعداد التوقيع الرسمي", "استرجاع وإدارة كلمات المرور"],
+          includes_en: ["Create domain-based business emails", "Setup on mobile and desktop", "Manage users and permissions", "Email security configuration", "Official email signature setup", "Password recovery and management"],
           skills: [
                { name_ar: "إدارة البريد الإلكتروني", name_en: "Email Administration", level: 93 },
                { name_ar: "أمن المعلومات", name_en: "Email Security", level: 90 },
                { name_ar: "إدارة الدومينات", name_en: "Domain Management", level: 88 }
           ],
-
           tech: ["Google Workspace", "Microsoft 365", "Domain DNS", "Email Hosting"]
      }
 ];
@@ -545,13 +274,26 @@ const T = {
           filter_mobile: "تطبيقات موبايل",
           cat_erp: "نظام ERP",
           cat_web: "منصة ويب",
+          cat_ecco: "متجر الإلكتروني",
           cat_mobile: "تطبيق موبايل",
-          proj1_title: "نظام إدارة الموارد",
-          proj2_title: "منصة البيانات التحليلية",
-          proj3_title: "تطبيق الخدمات اللوجستية",
-          proj4_title: "بوابة التجارة الإلكترونية",
-          proj5_title: "نظام إدارة المستشفيات",
-          proj6_title: "تطبيق التعليم الإلكتروني",
+          proj1_title: "موقع خدمات سياحية",
+          proj2_title: "متجر قطع غيار السيارات",
+          proj3_title: "متجر بيع الهدايا",
+          proj4_title: "موقع صندوق النظافة بسيئون",
+          proj5_title: "تصميم بطاقة معايدة لمجموعة فوتوكاد",
+          proj6_title: "موقع مركز طبي",
+          proj7_title: "موقع شركة مقاولات وبناء",
+          proj8_title: "موقع شركة منازل",
+          proj9_title: "موقع مقهى قهوة",
+          proj1_desc: "منصة سياحية متكاملة لحجز الرحلات والبرامج السياحية مع واجهة سهلة وتجربة مستخدم مميزة.",
+          proj2_desc: "متجر إلكتروني مطور على منصة سلة لبيع قطع غيار السيارات مع تصنيفات ذكية وطرق دفع متعددة.",
+          proj3_desc: "متجر إلكتروني مطور على منصة سلة متخصص في بيع الهدايا وتنسيقات المناسبات مع تصميم عصري وتجربة شراء سهلة.",
+          proj4_desc: "منصة إلكترونية لصندوق النظافة والتحسين بمدينة سيئون تتيح تقديم البلاغات والمقترحات ومتابعة الخدمات بسهولة.",
+          proj5_desc: "تصميم بطاقة معايدة احترافية لشركة مجموعة فوتوكاد بمناسبة الأعياد، مع مراعاة الهوية البصرية للشركة وإبراز الطابع الاحتفالي بأسلوب عصري يعكس هوية العلامة التجارية.",
+          proj6_desc: "موقع إلكتروني احترافي لمركز طبي يعرض الخدمات والأقسام الطبية وبيانات التواصل، مع تصميم متجاوب يوفر تجربة استخدام سهلة على مختلف الأجهزة.",
+          proj7_desc: "موقع تعريفي لشركة متخصصة في أعمال المقاولات والبناء، يستعرض الخدمات والمشاريع المنفذة بطريقة احترافية مع تصميم حديث ومتجاوب.",
+          proj8_desc: "موقع إلكتروني لشركة متخصصة في خدمات تنظيف المكاتب والمنشآت التجارية، يركز على عرض الخدمات وتعزيز سهولة التواصل مع العملاء.",
+          proj9_desc: "موقع تعريفي لمقهى يعرض قائمة المشروبات والمنتجات وأجواء المكان، بتصميم عصري يبرز هوية المقهى ويوفر تجربة تصفح سلسة للزوار.",
           hww_badge: "منهجيتنا",
           hww_title: "كيف <span>نعمل</span>؟",
           hww_desc: "نتبع منهجية عمل منظمة تضمن تحقيق أفضل النتائج.",
@@ -606,10 +348,18 @@ const T = {
           form_name_ph: "أدخل اسمك",
           form_email_ph: "example@company.com",
           form_company_ph: "اسم شركتك",
+          enter_your_name_placeholder: "أكتب الاسم كامل",
           form_msg_ph: "أخبرنا عن مشروعك...",
-          footer_desc: "شريكك في التحول الرقمي.",
+          footer_desc: "أطور مواقع إلكترونية، ومتاجر رقمية، وأنظمة مخصصة، وحلولًا تقنية حديثة تساعد الشركات والأفراد على تعزيز حضورهم الرقمي وتحقيق أهدافهم بكفاءة.",
           f_links: "روابط سريعة",
+          submit_order: "ارسال الطلب",
+          proj_desc_form: "تفاصيل المشروع",
+          form_company_placeholder: "اسم شركتك",
           f_services: "الخدمات",
+          f_service_wordpress: "ووردبريس",
+          f_service_mobile: "تطبيقات موبايل",
+          f_service_seo: "تحسين محركات البحث",
+          f_service_apps: "تطوير التطبيقات",
           f_news: "النشرة البريدية",
           f_news_desc: "اشترك لتصلك آخر الأخبار.",
           newsletter_ph: "بريدك الإلكتروني",
@@ -685,14 +435,27 @@ const T = {
           filter_web: "Web Apps",
           filter_mobile: "Mobile",
           cat_erp: "ERP System",
-          cat_web: "Web Platform",
+          cat_web: "Website",
           cat_mobile: "Mobile App",
-          proj1_title: "Resource Management",
-          proj2_title: "E-Commerce Gateway",
-          proj3_title: "E-Commerce Gateway",
-          proj4_title: "Website",
-          proj5_title: "Website ",
-          proj6_title: "Website",
+          cat_ecco: "E-commerce",
+          proj1_title: "Tourism Services Website",
+          proj2_title: "Auto Parts Store",
+          proj3_title: "Gift Store",
+          proj4_title: "Seiyun Cleaning Fund Website",
+          proj5_title: "Greeting Card Design for Photocad Group",
+          proj6_title: "Medical Center Website",
+          proj7_title: "Construction Company Website",
+          proj8_title: "Manazel Company Website",
+          proj9_title: "Coffee Shop Website",
+          proj1_desc: "An integrated tourism platform for booking trips and tourism programs with an easy interface and distinctive user experience.",
+          proj2_desc: "An e-commerce store built on Salla platform for selling auto parts with smart categories and multiple payment methods.",
+          proj3_desc: "An e-commerce store built on Salla platform specialized in selling gifts and event arrangements with a modern design and easy shopping experience.",
+          proj4_desc: "An electronic platform for the Cleaning and Improvement Fund in Hadramout city that allows submitting reports and suggestions and following up on services easily.",
+          proj5_desc: "Professional greeting card design for Photocad Group for the holidays, taking into account the company's visual identity and highlighting the festive character in a modern style that reflects the brand identity.",
+          proj6_desc: "A professional website for a medical center that displays services, medical departments, and contact information, with a responsive design that provides an easy user experience on various devices.",
+          proj7_desc: "An introductory website for a company specialized in contracting and construction works, displaying services and implemented projects professionally with a modern and responsive design.",
+          proj8_desc: "An electronic website for a company specialized in office and commercial facility cleaning services, focusing on displaying services and enhancing ease of communication with customers.",
+          proj9_desc: "An introductory website for a café that displays the menu of drinks and products and the atmosphere of the place, with a modern design that highlights the café's identity and provides a smooth browsing experience for visitors.",
           hww_badge: "Our Process",
           hww_title: "How We <span>Work</span>?",
           hww_desc: "A structured methodology for best results.",
@@ -722,6 +485,8 @@ const T = {
           q3_a: "ISO 27001 with end-to-end encryption.",
           q4_q: "Can you integrate with our systems?",
           q4_a: "Yes, via APIs.",
+          q5_q: "Can an ERP system be customized according to the nature of the company's business?",
+          q5_a: "Absolutely. The system is designed with flexibility that allows full customization based on the company's activities, whether commercial, industrial, or service-based, with the ability to add or modify modules according to business requirements.",
           contact_badge: "Contact Us",
           contact_title: "Start Your Project <span>Today</span>",
           contact_desc: "Fill the form and we'll contact you within 24 hours.",
@@ -745,10 +510,18 @@ const T = {
           form_name_ph: "Enter your name",
           form_email_ph: "example@company.com",
           form_company_ph: "Your company",
+          form_company_placeholder: "Your company name",
           form_msg_ph: "Tell us about your project...",
-          footer_desc: "Your strategic digital partner.",
+          footer_desc: "Building modern websites, e-commerce stores, and custom digital solutions that help businesses and individuals strengthen their online presence and achieve their goals efficiently.",
           f_links: "Quick Links",
+          submit_order: "Submit Order",
+          proj_desc_form: "Project Description",
+          enter_your_name_placeholder: "Enter Your Name",
           f_services: "Services",
+          f_service_wordpress: "WordPress",
+          f_service_mobile: "Mobile Apps",
+          f_service_seo: "SEO",
+          f_service_apps: "Application Development",
           f_news: "Newsletter",
           f_news_desc: "Subscribe for latest news.",
           newsletter_ph: "Your email",
@@ -829,7 +602,6 @@ const pInterval = setInterval(() => {
      }
      preloaderPercent.textContent = Math.floor(pProgress) + '%';
      preloaderFill.style.width = pProgress + '%';
-     const idx = Math.min(Math.floor(pProgress / 25), 4);
 }, 150);
 
 // =========================================
@@ -911,6 +683,10 @@ document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click
 // =========================================
 langBtn.addEventListener('click', () => {
      currentLang = currentLang === 'ar' ? 'en' : 'ar';
+
+     // 🔥 حفظ اللغة في localStorage
+     localStorage.setItem('lang', currentLang);
+
      langBtn.textContent = currentLang === 'ar' ? 'EN' : 'AR';
      document.documentElement.lang = currentLang;
      document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
@@ -921,20 +697,38 @@ langBtn.addEventListener('click', () => {
      populateServiceSelect();
 });
 
+// =========================================
+// 🔥 دالة تحديث الترجمة - التعديل الأساسي هنا
+// =========================================
 function updateLang(lang) {
      const d = T[lang];
      testimonials = lang === 'ar' ? arTest : enTest;
      testimonialIndex = 0;
-     // updateTestimonial();
+
+     // 1) تحديث العناصر التي لها data-i18n (النصوص العادية)
      document.querySelectorAll('[data-i18n]').forEach(el => {
           const k = el.getAttribute('data-i18n');
           if (d[k]) el.innerHTML = d[k];
      });
+
+     // 2) تحديث الـ placeholders
      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
           const k = el.getAttribute('data-i18n-placeholder');
           if (d[k]) el.placeholder = d[k];
      });
-     // buildDots();
+
+     // 3) 🔥 تحديث data-title و data-desc على عناصر portfolio-item
+     document.querySelectorAll('.portfolio-item').forEach(item => {
+          const titleKey = item.getAttribute('data-i18n-title');
+          const descKey = item.getAttribute('data-i18n-desc');
+
+          if (titleKey && d[titleKey]) {
+               item.setAttribute('data-title', d[titleKey]);
+          }
+          if (descKey && d[descKey]) {
+               item.setAttribute('data-desc', d[descKey]);
+          }
+     });
 }
 
 // =========================================
@@ -982,7 +776,6 @@ function openSvcModal(id) {
      const svc = servicesData.find(s => s.id === id);
      if (!svc) return;
      const isAr = currentLang === 'ar';
-     // document.getElementById('svcModalImg').src = svc.img;
      document.getElementById('svcModalCat').textContent = isAr ? svc.title_ar : svc.title_en;
      document.getElementById('svcModalTitle').textContent = isAr ? svc.title_ar : svc.title_en;
      document.getElementById('svcModalDesc').textContent = isAr ? svc.desc_full_ar : svc.desc_full_en;
@@ -1024,27 +817,14 @@ serviceModal.addEventListener('click', e => {
 });
 
 function populateServiceSelect() {
-
      const sel = document.getElementById('serviceSelect');
-
      sel.innerHTML = '';
-
      servicesData.forEach(svc => {
-
           const opt = document.createElement('option');
-
-          opt.value = currentLang === 'ar'
-               ? svc.title_ar
-               : svc.title_en;
-
-          opt.textContent = currentLang === 'ar'
-               ? svc.title_ar
-               : svc.title_en;
-
+          opt.value = currentLang === 'ar' ? svc.title_ar : svc.title_en;
+          opt.textContent = currentLang === 'ar' ? svc.title_ar : svc.title_en;
           sel.appendChild(opt);
-
      });
-
 }
 
 // =========================================
@@ -1062,13 +842,11 @@ let pmImageLoaded = false;
 
 portfolioItems.forEach(item => {
      item.addEventListener('click', () => {
+          // 🔥 الآن يقرأ من data-title و data-desc المحدّثة من الترجمة
           const title = item.getAttribute('data-title');
           const desc = item.getAttribute('data-desc');
           const longImg = item.getAttribute('data-img');
           const tech = item.getAttribute('data-tech');
-          // const duration = item.getAttribute('data-duration');
-          // const team = item.getAttribute('data-team');
-          // const client = item.getAttribute('data-client');
 
           document.getElementById('pmTitle').textContent = title;
           document.getElementById('pmDesc').textContent = desc;
@@ -1088,9 +866,6 @@ portfolioItems.forEach(item => {
                badge.textContent = t.trim();
                techStack.appendChild(badge);
           });
-          // document.getElementById('pmDuration').textContent = duration;
-          // document.getElementById('pmTeam').textContent = team;
-          // document.getElementById('pmClient').textContent = client;
 
           pmBackdrop.classList.add('active');
           document.body.style.overflow = 'hidden';
@@ -1143,7 +918,6 @@ function startPmScroll() {
           pmScrollProgress.style.width = pct + '%';
           pmScrollAnimFrame = requestAnimationFrame(animate);
      }
-
      pmScrollAnimFrame = requestAnimationFrame(animate);
 }
 
@@ -1212,7 +986,6 @@ function initGSAP() {
           });
      });
 
-     // Counter bars animation
      document.querySelectorAll('.counter-enhanced-bar-fill').forEach(bar => {
           ScrollTrigger.create({
                trigger: bar, start: 'top 85%', once: true, onEnter: () => {
@@ -1221,7 +994,6 @@ function initGSAP() {
           });
      });
 
-     // Counter numbers
      document.querySelectorAll('.counter').forEach(counter => {
           const target = parseInt(counter.getAttribute('data-target'));
           ScrollTrigger.create({
@@ -1263,7 +1035,6 @@ function buildDots() {
           dot.className = 'slider-dot' + (i === testimonialIndex ? ' active' : '');
           dot.addEventListener('click', () => {
                testimonialIndex = i;
-               // updateTestimonial();
           });
           dc.appendChild(dot);
      });
@@ -1280,22 +1051,11 @@ function updateTestimonial() {
                gsap.to('#testimonialCard', { opacity: 1, y: 0, duration: 0.5 });
           }
      });
-     // buildDots();
 }
 
-// document.getElementById('nextTest').addEventListener('click', () => {
-//      testimonialIndex = (testimonialIndex + 1) % testimonials.length;
-//      updateTestimonial();
-// });
-// document.getElementById('prevTest').addEventListener('click', () => {
-//      testimonialIndex = (testimonialIndex - 1 + testimonials.length) % testimonials.length;
-//      updateTestimonial();
-// });
 setInterval(() => {
      testimonialIndex = (testimonialIndex + 1) % testimonials.length;
-     // updateTestimonial();
 }, 7000);
-// buildDots();
 
 // =========================================
 // FAQ
@@ -1387,7 +1147,7 @@ function initParticles() {
      function drawLines() {
           for (let i = 0; i < particles.length; i++) for (let j = i + 1; j < particles.length; j++) {
                const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y,
-                    dist = Math.sqrt(dx * dx + dy * dy);
+                   dist = Math.sqrt(dx * dx + dy * dy);
                if (dist < 140) {
                     ctx.beginPath();
                     ctx.strokeStyle = `rgba(37,99,235,${0.08 * (1 - dist / 140)})`;
@@ -1436,7 +1196,24 @@ document.addEventListener('keydown', e => {
      }
 });
 
-// Init
+// =========================================
+// 🔥 Init - التهيئة الأولية
+// =========================================
+// 1) تطبيق إعدادات اللغة الأولية
+document.documentElement.lang = currentLang;
+document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+langBtn.textContent = currentLang === 'ar' ? 'EN' : 'AR';
+const bs = document.getElementById('bootstrap-css');
+if (bs) {
+     bs.href = currentLang === 'ar'
+         ? 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css'
+         : 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css';
+}
+
+// 2) تطبيق الترجمة
+updateLang(currentLang);
+
+// 3) تهيئة الخدمات
 renderServices();
 populateServiceSelect();
 initParticles();
