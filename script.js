@@ -603,7 +603,10 @@ let testimonials = arTest;
 //      preloaderPercent.textContent = Math.floor(pProgress) + '%';
 //      preloaderFill.style.width = pProgress + '%';
 // }, 150);
-
+document.addEventListener("DOMContentLoaded", () => {
+     document.body.style.overflow = "auto";
+     initGSAP();
+});
 // =========================================
 // CURSOR
 // =========================================
