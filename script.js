@@ -3,9 +3,9 @@
 // =========================================
 const cursorDot = document.getElementById('cursorDot');
 const cursorRing = document.getElementById('cursorRing');
-const preloader = document.getElementById('preloader');
-const preloaderFill = document.getElementById('preloaderFill');
-const preloaderPercent = document.getElementById('preloaderPercent');
+// const preloader = document.getElementById('preloader');
+// const preloaderFill = document.getElementById('preloaderFill');
+// const preloaderPercent = document.getElementById('preloaderPercent');
 const scrollProgressEl = document.getElementById('scrollProgressEl');
 const backToTop = document.getElementById('backToTop');
 const langBtn = document.getElementById('langBtn');
@@ -588,21 +588,21 @@ let testimonials = arTest;
 // =========================================
 // PRELOADER
 // =========================================
-let pProgress = 0;
-const pInterval = setInterval(() => {
-     pProgress += Math.random() * 12 + 3;
-     if (pProgress >= 100) {
-          pProgress = 100;
-          clearInterval(pInterval);
-          setTimeout(() => {
-               preloader.classList.add('hidden');
-               document.body.style.overflow = 'auto';
-               initGSAP();
-          }, 400);
-     }
-     preloaderPercent.textContent = Math.floor(pProgress) + '%';
-     preloaderFill.style.width = pProgress + '%';
-}, 150);
+// let pProgress = 0;
+// const pInterval = setInterval(() => {
+//      pProgress += Math.random() * 12 + 3;
+//      if (pProgress >= 100) {
+//           pProgress = 100;
+//           clearInterval(pInterval);
+//           setTimeout(() => {
+//                preloader.classList.add('hidden');
+//                document.body.style.overflow = 'auto';
+//                initGSAP();
+//           }, 400);
+//      }
+//      preloaderPercent.textContent = Math.floor(pProgress) + '%';
+//      preloaderFill.style.width = pProgress + '%';
+// }, 150);
 
 // =========================================
 // CURSOR
