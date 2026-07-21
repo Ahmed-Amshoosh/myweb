@@ -1,0 +1,20 @@
+User-agent: *
+
+# Allow all public pages
+Allow: /
+
+# Disallow sensitive directories
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /login
+Disallow: /register
+Disallow: /password/*
+Disallow: /storage/
+Disallow: /vendor/
+Disallow: /private/
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://madarat-tech.com/sitemap.xml
+
+Host: madarat-tech.com
